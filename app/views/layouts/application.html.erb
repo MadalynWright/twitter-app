@@ -21,7 +21,7 @@
 		    <ul class="nav navbar-nav">
 		    	<li><%= link_to 'Home', root_path %></li>
 		    	<li><%= link_to 'New Tweet', new_tweet_path %></li>
-		    	
+		    	<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
 		    </ul>
 		</div>
   	</nav>

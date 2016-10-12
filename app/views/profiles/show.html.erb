@@ -30,7 +30,12 @@
 				<strong><%= tweet.user.username %> </strong><small>tweeted </small>
 				<br>
 				<br>
-				<%= tweet.message %>
+				<%= tweet.message %><br>
+				<% if current_user.likes?(tweet) %>
+	<%= link_to "Unlike", tweet_like_path(tweet), method: :delete %>
+<% else %>
+	<%= link_to "Like", tweet_like_path(tweet), method: :post %>
+<% end %>
 			</div>
 		<% end %>
 	</div>
@@ -41,6 +46,6 @@
 	<% if current_user.friends.include?(@user) %>
 		<%= link_to "Unfollow", relationship_path(current_user.relationships.find_by_friend_id(@user)), :method => :delete %>
 	<% else %>
-		<%= link_to "Follow", relatioships_path(friend_id: @user), method: :post %>
+		<%= link_to "Follow", relationships_path(friend_id: @user), method: :post %>
 	<% end %>
 <% end %>
